@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Mike, Tuto JS Classes</title>
+  </head>
+  <body>
+    <h3>Classes</h3>
+    <script>
+
+    var voiture1 = {
+      marque : 'Renault',
+      modele : 'Twingo',
+      annee : 2000,
+    }
+    
+    function Voituree(marque, modele, annee){
+      this.marque = marque;
+      this.modele = modele;
+      this.annee = annee ;
+    }
+
+    var voiture = new Voituree('BMW','M3','2018');
+    console.log('voiture '+voiture.marque);
+
+    class Voiture {
+        constructor(marque, modele, annee){
+            this.marque = marque;
+            this.modele = modele;
+            this.annee = annee ;
+        }
+    }
+
+    var voiture2 = new Voiture('Ferrari','modelM3','2018');
+    console.log('voiture '+voiture2.marque);
+
+    class Vehicule {
+        constructor(marque, modele, annee, nbRoue, nbPorte){
+            this.marque = marque;
+            this.modele = modele;
+            this.annee = annee ;
+            this.nbRoue = nbRoue;
+            this.nbPorte = nbPorte;
+        }
+        rouler(){
+            console.log("je roule !!")
+        }
+        cabrer(){
+            console.log("je cabre !!")
+        }
+    }
+
+    class Moto extends Vehicule {
+        constructor(marque, modele, annee){
+            super(marque, modele, annee, 2, 0 )
+        }
+        cabrer(){
+            console.log("je cabre !!")
+        }
+    }
+
+    class Voit extends Vehicule {
+        constructor(marque, modele, annee, nbPorte){
+            super(marque, modele, annee, 2, nbPorte)
+        }
+    }
+
+    class Voiture2Porte extends Voit {
+        constructor(marque, modele, annee){
+            super(marque, modele, annee, 2 , 2)
+        }
+    }
+
+    class Voiture4Porte extends Voit {
+        constructor(marque, modele, annee){
+            super(marque, modele, annee, 4, 2)
+        }
+    }
+
+    var voit = new Voit('Ferrari','modelM3','2018', 4);
+    var porshe = new Voiture2Porte('Ferrari','modelM3','2018');
+    var twingo = new Voiture4Porte('Twingo','modelM3','2018');
+    var moto = new Moto('Suzuki','s','2000');
+
+    moto.rouler();
+    moto.cabrer();
+    twingo.rouler();
+    twingo.cabrer();
+    console.log('porshe '+porshe.nbPorte);
+    console.log('twingo '+twingo.nbPorte);
+
+    </script>
+
+  </body>
+</html>

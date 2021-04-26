@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Valentin Soro Projet js</title>
+</head>
+
+<body>
+    <h3>Classes</h3>
+    <p id='p1'></p>
+    <script>
+
+        //1 - Créer une Classe Robot
+        class Robot {
+            constructor(nom, pointsVie, vitesseMaxi, x, y) {
+                this.nom = nom;
+                this.nom = nom;
+                this.pointsVie = 100;
+                this.vitesseMaxi = 3;
+                this.x = 0;
+                this.y = 0;
+            }
+
+
+            presentation() {
+                console.log('Bonjour Je m\'apelle ' + this.nom + ' j\'ai ' + this.pointsVie + ' points de vie et je me deplace de ' + this.vitesseMaxi + ' cases par seconde. je suis à la case ' + '(' + this.x + ';' + this.y + ')');
+            }
+
+            //5 - Des Robots à la conquête du monde
+            seDeplacerVers(direct) {
+                switch (direct) {
+                    case 'haut':
+                        this.y++;
+                        console.log('Je me deplace de ' + this.y + ' cases vers le haut');
+                        break;
+                    case 'droite':
+                        this.x++;
+                        console.log('Je me deplace de ' + this.x + ' cases vers la droite');
+                        break;
+                    case 'bas':
+                        this.y--;
+                        console.log('Je me deplace de ' + this.y * (-1) + ' cases vers le bas');
+                        break;
+                    case 'gauche':
+                        this.x--;
+                        console.log('Je me deplace de ' + this.x * (-1) + ' cases vers la gauche');
+                        break;
+                }
+            }
+
+            //6 - En mouvement brownien
+            seDeplacerAleatoirement(number) {
+                var directions = ['haut', 'droite', 'bas', 'gauche'];
+                var randDirection = Math.floor(Math.random() * number);
+                var randNumber = Math.floor(Math.random() * number);
+                var direction = directions[randDirection];
+                switch (direction) {
+                    case 'haut':
+                        this.y = this.y + randNumber;
+                        console.log('Je me deplace de ' + this.y + ' cases vers le haut');
+                        break;
+                    case 'droite':
+                        this.x = this.x + randNumber;
+                        console.log('Je me deplace de ' + this.x + ' cases vers la droite');
+                        break;
+                    case 'bas':
+                        this.y = this.y - randNumber;
+                        console.log('Je me deplace de ' + this.y * (-1) + ' cases vers le bas');
+                        break;
+                    case 'gauche':
+                        this.x = this.x - randNumber;
+                        console.log('Je me deplace de ' + this.x * (-1) + ' cases vers la gauche');
+                        break;
+                }
+            }
+        }
+
+
+        //2 - Robot à un ami
+        var robot1 = new Robot('Rob 1', 200, 2, 3, 4);
+        var robot2 = new Robot('Rob 2', 400, 5, 5, 2);
+        console.log(robot1.nom)
+
+        //3 - Des Robots qui parlent
+        robot1.presentation();
+        robot2.presentation();
+
+        //4 - Une armée de robots
+        var robot3 = new Robot('Rob 3', 200, 2, 0, 2);
+        var robot4 = new Robot('Rob 4', 400, 5, 1, 1);
+        var robots = [robot1, robot2, robot3, robot4];
+        robots.forEach((robot) => robot.presentation());
+
+        //5 - Des Robots à la conquête du monde (Application)
+        robot1.seDeplacerVers('haut');
+        robot3.seDeplacerVers('gauche');
+
+        //6 - En mouvement brownien (Application)
+        robot1.seDeplacerAleatoirement(4);
+
+
+        //7 - Des robots uniques (2éme constructeur)
+        class RobotU {
+            constructor(nom, pointsVie, vitesseMaxi, x, y) {
+                this.nom = nom;
+                this.nom = nom;
+                this.pointsVie = pointsVie;
+                this.vitesseMaxi = vitesseMaxi;
+                this.x = x;
+                this.y = x;
+            }
+        }
+
+        var robot5 = new RobotU('Rob 4', 400, 5, 3, 2);
+        console.log(robot1.x);
+        console.log(robot2.x);
+        console.log(robot5.x);
+
+        //8 - Des Robots Méchants
+        class RobotMechant extends Robot {
+            constructor(nom, pointsVie, vitesseMaxi, x, y, pointsDommage, degats) {
+                super(nom, pointsVie, vitesseMaxi, x, y)
+
+            }
+            attaque() {
+                if (this.degats == true) {
+                    console.log('vous avez une option de degats à distance vous pouvez attaquer');
+                } else {
+                    console.log('La cible est trop loin pour être attaquée');
+                }
+            }
+
+        }
+        
+        var robotMechant =new RobotMechant('Rob Danger', 200, 5, 2, 3, 5, false);
+        robotMechant.attaque();
+        
+
+
+    </script>
+    
+</body>
+
+</html>
