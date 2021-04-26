@@ -5,7 +5,7 @@ main(List<String> args) {
 
   Robot robot1 = new Robot('Rob 1', 200, 2, 3, 4);
   Robot robot2 = new Robot('Rob 2', 400, 5, 5, 2);
-  Robot robot3 = new Robot('Rob 3', 200, 2, 0, 2);
+  Robot robot3 = new Robot('Rob 3', 200, 2, 0, 3);
   Robot robot4 = new Robot('Rob 4', 400, 5, 1, 1);
 
   //3 - Des Robots qui parlent
